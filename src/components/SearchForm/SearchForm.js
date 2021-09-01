@@ -3,7 +3,7 @@ import Input from '../Input/Input';
 import './SearchForm.css';
 
 const SearchForm = (props) => {
-  const { handleSearch, results } = props;
+  const { handleSearch } = props;
 
   const [input, setInput] = React.useState('');
 
@@ -16,13 +16,7 @@ const SearchForm = (props) => {
   }
 
   React.useEffect(() => {
-
-    // const result = results.filter((x) => ((!input || x.name.first.indexOf(input) !== -1) || (!input || x.name.last.indexOf(input) !== -1)))
-    // const news = result.map((results) => ({ ...results }));
-    // return news;
-
     handleSearch({ input });
-
   }, [input]);
 
   function handleSubmitInput(e) {
@@ -36,7 +30,7 @@ const SearchForm = (props) => {
       <form onSubmit={handleSubmitInput} className='search__form' noValidate>
         <Input
           inputFieldClassName='search__input'
-          placeholder='Введите пост'
+          placeholder='Введите имя пользователя'
           name='search'
           type='text'
           onChange={handleChangeInput}

@@ -10,6 +10,8 @@ function Post(props) {
   const day = reformattedDate.slice(8, 10);
   const month = reformattedDate.slice(5, 7);
 
+  const date = new Date(result.registered.date);
+
   const [over, setOver] = React.useState(false);
 
   function openTooltip() {
@@ -25,7 +27,7 @@ function Post(props) {
       <td className='users__content_slot'>{result.name.first} {result.name.last}</td>
       <td className='users__content_slot'>
         <img className='users__content_picture' src={result.picture.thumbnail} alt='avatar' onMouseOut={closeTooltip} onMouseOver={openTooltip} />
-        <img className={`${over ? 'users__content_picture_hover' : 'users__content_picture_hovertwo' }`} src={result.picture.large} alt='avatar' />
+        <img className={`${over ? 'users__content_picture_hover' : 'users__content_picture_hovertwo'}`} src={result.picture.large} alt='avatar' />
       </td>
       <td className='users__content_slot'>{result.location.state} {result.location.city}</td>
       <td className='users__content_slot'>{result.email}</td>
