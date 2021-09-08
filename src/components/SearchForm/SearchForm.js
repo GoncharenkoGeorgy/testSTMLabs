@@ -15,8 +15,30 @@ const SearchForm = (props) => {
     setInput("");
   }
 
+  // function debounce(f, ms) {
+  //   let isCooldown = false;
+  //   return function() {
+  //     if (isCooldown) return;
+  //     f.apply(this, arguments);
+  //     isCooldown = true;
+  //     setTimeout(() => isCooldown = false, ms);
+  //   };
+  // }
+
+  function debounce(callback, delay) {
+    let timeout;
+    return function () {
+      clearTimeout(timeout);
+      timeout = setTimeout(callback, delay);
+    }
+  }
+
   React.useEffect(() => {
+
     handleSearch({ input });
+
+    //debounce(handleSearch({ input }), 10000);
+    
   }, [input]);
 
   function handleSubmitInput(e) {
